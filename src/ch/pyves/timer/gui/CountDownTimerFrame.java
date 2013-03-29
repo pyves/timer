@@ -7,28 +7,24 @@ import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import ch.pyves.timer.model.CountDownTimer;
 
 public class CountDownTimerFrame extends JFrame {
 
-    private CountDownTimer timer = null;
+    CountDownTimer timer = null;
     private Container contentPane;
     private JPanel menuPanel;
     private JPanel infoPanel;
     private JMenuBar menuBar;
-    private Painter currentCenter;
+    Painter currentCenter;
     private JTextField startTime;
     private JTextField hours;
     private JTextField minutes;
@@ -38,11 +34,11 @@ public class CountDownTimerFrame extends JFrame {
     private JButton cns1815;
     private JButton cns2030;
     private JButton autoStart;
-    private JButton setTime;
-    private JButton start;
-    private JButton stop;
-    private JButton lateRun;
-    private JLabel currentTime;
+    JButton setTime;
+    JButton start;
+    JButton stop;
+    JButton lateRun;
+    JLabel currentTime;
     public static final boolean _CNS=false;
     /**
      * 
@@ -203,7 +199,7 @@ public class CountDownTimerFrame extends JFrame {
         menuPanel.add (lateRun);
         lateRun.addActionListener (
                 new ActionListener(){
-                    public void actionPerformed (ActionEvent e) {
+                     public void actionPerformed (ActionEvent e) {
                         timer.setRunLate ();
                         lateRun.setText ((timer.isRunLate ())?"Stop at zero":"Run late");
                      }

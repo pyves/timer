@@ -137,7 +137,6 @@ public class CountDownElement implements Serializable, Comparable<CountDownEleme
         if (endFullTime1 < startLeadTime2 || endFullTime2 < startLeadTime1){
             return OverlapType.NO_OVERLAP;
         }
-        else if (false);
         return OverlapType.NO_COMPUTE;
     }
 }

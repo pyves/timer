@@ -9,7 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedHashMap;
-import java.util.Vector;
 import java.util.prefs.Preferences;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -72,24 +71,26 @@ public class CountDownTimer implements ActionListener {
     }
 
     public void setMinutes (int minutes) {
-        while (minutes > 59){
-            hours+=minutes/60;
+        int aMinutes = minutes;
+        while (aMinutes > 59){
+            hours+=aMinutes/60;
             countDownPrefs.putInt ("hours", hours);
-            minutes-=(minutes/60)*60;
+            aMinutes-=(aMinutes/60)*60;
         }
-        this.minutes = minutes;
-        countDownPrefs.putInt ("minutes", minutes);
+        this.minutes = aMinutes;
+        countDownPrefs.putInt ("minutes", aMinutes);
     }
     
 
     public void setSeconds (int seconds) {
-        if (seconds > 3599){
-            this.hours+=seconds/3600;
+        int aSeconds = seconds;
+        if (aSeconds > 3599){
+            this.hours+=aSeconds/3600;
             countDownPrefs.putInt ("hours", hours);
-            seconds -= (seconds/3600)*3600;
+            aSeconds -= (aSeconds/3600)*3600;
         }
-        if (seconds > 59){
-            this.minutes+=seconds/60;
+        if (aSeconds > 59){
+            this.minutes+=aSeconds/60;
             countDownPrefs.putInt ("minutes", minutes);
             if (this.minutes>59){
                 this.hours+=(this.minutes/60);
@@ -97,10 +98,10 @@ public class CountDownTimer implements ActionListener {
                 this.minutes-=(this.minutes/60)*60;
                 countDownPrefs.putInt ("minutes", minutes);
             }
-            seconds-=(seconds/60)*60;
+            aSeconds-=(aSeconds/60)*60;
         }
-        this.seconds = seconds;
-        countDownPrefs.putInt ("seconds", seconds);
+        this.seconds = aSeconds;
+        countDownPrefs.putInt ("seconds", aSeconds);
     }
 
     public void setStartTime(int startHour, int startMinute, int startSecond){
