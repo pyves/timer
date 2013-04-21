@@ -12,3 +12,9 @@
 /.settings/*
 /bin
 /build
+/.settings
+/target
+/target/*
+
+# Mac
+.DS_Store
