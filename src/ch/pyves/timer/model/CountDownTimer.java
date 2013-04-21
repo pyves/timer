@@ -241,9 +241,9 @@ public class CountDownTimer implements ActionListener {
         }
         setStartTime (startHour, startMinute, startSecond);
     }
-public boolean isAutoStart(){
-    return autoStart;
-}
+    public boolean isAutoStart(){
+        return autoStart;
+    }
     public void setFrame (CountDownTimerFrame frame) {
         this.frame = frame;
     }
@@ -252,34 +252,34 @@ public boolean isAutoStart(){
         stamps = new LinkedHashMap<Long,Integer> ();
         long now = System.currentTimeMillis ();
         if (CountDownTimerFrame._CNS){
-        try {
-            File f = new File(System.getProperty ("user.dir"),"ts.txt");
-            BufferedReader in = new BufferedReader (new FileReader (f));
-            String line;
-            while ((line=in.readLine ())!=null){
-                line = line.trim ();
-                if (!line.isEmpty ()&&!line.startsWith ("#")){
-                    String[] nums = line.split ("\t");
-                    long l = 0;
-                    int i = 6600;
-                    if (nums.length>0){
-                        l = (Long.parseLong (nums[0])*1000);
+            try {
+                File f = new File(System.getProperty ("user.dir"),"ts.txt");
+                BufferedReader in = new BufferedReader (new FileReader (f));
+                String line;
+                while ((line=in.readLine ())!=null){
+                    line = line.trim ();
+                    if (!line.isEmpty ()&&!line.startsWith ("#")){
+                        String[] nums = line.split ("\t");
+                        long l = 0;
+                        int i = 6600;
+                        if (nums.length>0){
+                            l = (Long.parseLong (nums[0])*1000);
+                        }
+                        if (nums.length>1){
+                            i = (Integer.parseInt (nums[1]));
+                        }
+                        if (l<now){
+                            stamps.clear ();
+                        }
+                        stamps.put (Long.valueOf (l),Integer.valueOf (i));
                     }
-                    if (nums.length>1){
-                        i = (Integer.parseInt (nums[1]));
-                    }
-                    if (l<now){
-                        stamps.clear ();
-                    }
-                    stamps.put (Long.valueOf (l),Integer.valueOf (i));
                 }
+                in.close ();
             }
-            in.close ();
-        }
-        catch (Exception e){
-            stamps=null;
-            JOptionPane.showMessageDialog (frame, "Erreur "+e.getMessage ());
-        }
+            catch (Exception e){
+                stamps=null;
+                JOptionPane.showMessageDialog (frame, "Erreur "+e.getMessage ());
+            }
         }
 //        stamps=new Vector<Long> ();
 //        stamps.add (Long.valueOf (1295897400000L));
