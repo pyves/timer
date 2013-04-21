@@ -23,6 +23,10 @@ public class CountDownTimer implements ActionListener {
     private int hours = countDownPrefs.getInt ("hours", 1);
     private int minutes = countDownPrefs.getInt ("minutes",50);
     private int seconds = countDownPrefs.getInt ("seconds",0);
+    private int xPos = countDownPrefs.getInt ("xPos",0);
+    private int yPos = countDownPrefs.getInt ("yPos",0);
+    private int width = countDownPrefs.getInt ("width",3200);
+    private int height = countDownPrefs.getInt ("height",3200);
     private int tenth = 9;
     private long counterStartTime = 0;
     private long millisElapsed = 0;
@@ -63,6 +67,43 @@ public class CountDownTimer implements ActionListener {
 
     public CountDownTimerFrame getFrame () {
         return frame;
+    }
+
+    
+    public int getxPos () {
+        return xPos;
+    }
+
+    public int getyPos () {
+        return yPos;
+    }
+
+    public int getWidth () {
+        return width;
+    }
+
+    public int getHeight () {
+        return height;
+    }
+
+    public void setxPos (int xPos) {
+        this.xPos = xPos;
+        countDownPrefs.putInt ("xPos", xPos);
+    }
+
+    public void setyPos (int yPos) {
+        this.yPos = yPos;
+        countDownPrefs.putInt ("yPos", yPos);
+    }
+
+    public void setWidth (int width) {
+        this.width = width;
+        countDownPrefs.putInt ("width", width);
+    }
+
+    public void setHeight (int height) {
+        this.height = height;
+        countDownPrefs.putInt ("height", height);
     }
 
     public void setHours (int hours) {
@@ -241,9 +282,9 @@ public class CountDownTimer implements ActionListener {
         }
         setStartTime (startHour, startMinute, startSecond);
     }
-public boolean isAutoStart(){
-    return autoStart;
-}
+    public boolean isAutoStart(){
+        return autoStart;
+    }
     public void setFrame (CountDownTimerFrame frame) {
         this.frame = frame;
     }
@@ -252,34 +293,34 @@ public boolean isAutoStart(){
         stamps = new LinkedHashMap<Long,Integer> ();
         long now = System.currentTimeMillis ();
         if (CountDownTimerFrame._CNS){
-        try {
-            File f = new File(System.getProperty ("user.dir"),"ts.txt");
-            BufferedReader in = new BufferedReader (new FileReader (f));
-            String line;
-            while ((line=in.readLine ())!=null){
-                line = line.trim ();
-                if (!line.isEmpty ()&&!line.startsWith ("#")){
-                    String[] nums = line.split ("\t");
-                    long l = 0;
-                    int i = 6600;
-                    if (nums.length>0){
-                        l = (Long.parseLong (nums[0])*1000);
+            try {
+                File f = new File(System.getProperty ("user.dir"),"ts.txt");
+                BufferedReader in = new BufferedReader (new FileReader (f));
+                String line;
+                while ((line=in.readLine ())!=null){
+                    line = line.trim ();
+                    if (!line.isEmpty ()&&!line.startsWith ("#")){
+                        String[] nums = line.split ("\t");
+                        long l = 0;
+                        int i = 6600;
+                        if (nums.length>0){
+                            l = (Long.parseLong (nums[0])*1000);
+                        }
+                        if (nums.length>1){
+                            i = (Integer.parseInt (nums[1]));
+                        }
+                        if (l<now){
+                            stamps.clear ();
+                        }
+                        stamps.put (Long.valueOf (l),Integer.valueOf (i));
                     }
-                    if (nums.length>1){
-                        i = (Integer.parseInt (nums[1]));
-                    }
-                    if (l<now){
-                        stamps.clear ();
-                    }
-                    stamps.put (Long.valueOf (l),Integer.valueOf (i));
                 }
+                in.close ();
             }
-            in.close ();
-        }
-        catch (Exception e){
-            stamps=null;
-            JOptionPane.showMessageDialog (frame, "Erreur "+e.getMessage ());
-        }
+            catch (Exception e){
+                stamps=null;
+                JOptionPane.showMessageDialog (frame, "Erreur "+e.getMessage ());
+            }
         }
 //        stamps=new Vector<Long> ();
 //        stamps.add (Long.valueOf (1295897400000L));

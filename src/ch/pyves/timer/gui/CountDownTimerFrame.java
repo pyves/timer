@@ -48,8 +48,8 @@ public class CountDownTimerFrame extends JFrame {
     public CountDownTimerFrame (CountDownTimer countDown) throws HeadlessException {
         timer = countDown;
         
-        setLocation(0,0);
-        setSize (3200,3200);
+        setLocation(timer.getxPos (),timer.getyPos ());
+        setSize (timer.getWidth (),timer.getHeight ());
         setMinimumSize (new Dimension (100, 200));
         setTitle ("CountDown Timer");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
