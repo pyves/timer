@@ -23,6 +23,10 @@ public class CountDownTimer implements ActionListener {
     private int hours = countDownPrefs.getInt ("hours", 1);
     private int minutes = countDownPrefs.getInt ("minutes",50);
     private int seconds = countDownPrefs.getInt ("seconds",0);
+    private int xPos = countDownPrefs.getInt ("xPos",0);
+    private int yPos = countDownPrefs.getInt ("yPos",0);
+    private int width = countDownPrefs.getInt ("width",3200);
+    private int height = countDownPrefs.getInt ("height",3200);
     private int tenth = 9;
     private long counterStartTime = 0;
     private long millisElapsed = 0;
@@ -63,6 +67,43 @@ public class CountDownTimer implements ActionListener {
 
     public CountDownTimerFrame getFrame () {
         return frame;
+    }
+
+    
+    public int getxPos () {
+        return xPos;
+    }
+
+    public int getyPos () {
+        return yPos;
+    }
+
+    public int getWidth () {
+        return width;
+    }
+
+    public int getHeight () {
+        return height;
+    }
+
+    public void setxPos (int xPos) {
+        this.xPos = xPos;
+        countDownPrefs.putInt ("xPos", xPos);
+    }
+
+    public void setyPos (int yPos) {
+        this.yPos = yPos;
+        countDownPrefs.putInt ("yPos", yPos);
+    }
+
+    public void setWidth (int width) {
+        this.width = width;
+        countDownPrefs.putInt ("width", width);
+    }
+
+    public void setHeight (int height) {
+        this.height = height;
+        countDownPrefs.putInt ("height", height);
     }
 
     public void setHours (int hours) {
