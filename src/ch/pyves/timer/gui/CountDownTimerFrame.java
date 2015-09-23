@@ -39,7 +39,7 @@ public class CountDownTimerFrame extends JFrame {
     JButton stop;
     JButton lateRun;
     JLabel currentTime;
-    public static final boolean _CNS=false;
+    public static final boolean _CNS=true;
     /**
      * 
      */
@@ -66,7 +66,7 @@ public class CountDownTimerFrame extends JFrame {
                     currentCenter.setComputeSize (true);
                     startTime.setText ("auto");
                     hours.setText ("1");
-                    minutes.setText ("50");
+                    minutes.setText ("47");
                     seconds.setText ("00");
                     leadSeconds.setText ("60");
                     if (!timer.isRunLate ()){
@@ -86,7 +86,7 @@ public class CountDownTimerFrame extends JFrame {
                     currentCenter.setComputeSize (true);
                     startTime.setText ("18:15:00");
                     hours.setText ("1");
-                    minutes.setText ("50");
+                    minutes.setText ("47");
                     seconds.setText ("00");
                     leadSeconds.setText ("60");
                     if (!timer.isRunLate ()){
@@ -104,7 +104,7 @@ public class CountDownTimerFrame extends JFrame {
                     currentCenter.setComputeSize (true);
                     startTime.setText ("20:30:00");
                     hours.setText ("1");
-                    minutes.setText ("50");
+                    minutes.setText ("47");
                     seconds.setText ("00");
                     leadSeconds.setText ("60");
                     if (!timer.isRunLate ()){
