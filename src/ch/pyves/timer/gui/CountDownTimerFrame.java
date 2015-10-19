@@ -39,7 +39,7 @@ public class CountDownTimerFrame extends JFrame {
     JButton stop;
     JButton lateRun;
     JLabel currentTime;
-    public static final boolean _CNS=true;
+    public static final boolean _CNS=false;
     /**
      * 
      */
